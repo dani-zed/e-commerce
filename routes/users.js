@@ -62,7 +62,7 @@ router.get('/personal-details',verifyLogin,async(req,res)=>{
   if (req.session.user) {
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
-  res.render('user/personal-details',{cartCount})
+  res.render('user/personal-details',{admin:false,cartCount})
 })
 
 router.get('/products',async(req,res)=>{
@@ -71,7 +71,7 @@ router.get('/products',async(req,res)=>{
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
   productHelper.getAllProducts().then((products) => {
-    res.render('user/products',{products,cartCount})
+    res.render('user/products',{admin:false,products,cartCount})
   });
 })
 
@@ -113,7 +113,7 @@ router.get('/cart', verifyLogin, async (req, res) => {
 
   products = products.map((product, index) => ({ ...product, index: index + 1 }));
 
-  res.render('user/cart', { products, user: req.session.user, total,cartCount });
+  res.render('user/cart', { admin:false,products, user: req.session.user, total,cartCount });
 });
 
 
@@ -152,7 +152,7 @@ router.get('/place-order',verifyLogin,async(req,res)=>{
   if (req.session.user) {
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
-  res.render('user/place-order',{user:req.session.user,total,cartCount});
+  res.render('user/place-order',{admin:false,user:req.session.user,total,cartCount});
 })
 router.post('/place-order', async (req, res) => {
   try {
@@ -188,7 +188,7 @@ router.post('/place-order', async (req, res) => {
 
 
 router.get('/order-success',verifyLogin,(req,res)=>{
-  res.render('user/order-success',{user:req.session.user})
+  res.render('user/order-success',{admin:false,user:req.session.user})
 })
 
 
@@ -225,7 +225,7 @@ router.get('/orders', verifyLogin, async (req, res) => {
     });
 
     console.log('ordered items:', orders);
-    res.render('user/orders', { user: req.session.user, orders, cartCount });
+    res.render('user/orders', {admin:false, user: req.session.user, orders, cartCount });
   } catch (error) {
     console.error('Error in /orders route:', error);
     res.status(500).send('Internal Server Error');
@@ -260,6 +260,9 @@ router.get('/about',async(req,res)=>{
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
   res.render('user/about',{cartCount})
+})
+router.get('/view-order-details',async(req,res)=>{
+  res.render('user/view-order-details',{admin:false})
 })
 
 router.get('/the-product/:id', async (req, res) => {

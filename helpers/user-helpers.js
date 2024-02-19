@@ -231,7 +231,7 @@ module.exports = {
                     $sum: {
                       $multiply: [
                         { $toDouble: '$quantity' },
-                        { $toDouble: '$product.prise' }
+                        { $toDouble: '$product.price' }
                       ]
                     }
                   }
@@ -376,7 +376,7 @@ module.exports = {
       changePaymentStatus:(orderId)=>{
         return new Promise((resolve,reject)=>{
           db.get().collection(collection.ORDER_COLLECTION)
-          .upadteOne({_id:new ObjectId(orderId)},
+          .updateOne({_id:new ObjectId(orderId)},
           {
             $set:{status:'Placed'}
           }

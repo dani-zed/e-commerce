@@ -7,7 +7,7 @@ body {
 
 .top-section {
   text-align: center;
-  background-color: #fff;
+  background-color: #3c3c3c;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@ body {
 }
 
 .top-section a {
-  color: #2c3e50;
+  color: #b2bcc4;
   font-size: 24px;
   font-weight: bold;
   flex: 1;
@@ -29,7 +29,7 @@ body {
   position: absolute;
   width: 100%; 
   height: 5px;
-  background-color: #28a745; 
+  background-color: #cb9227; 
   bottom: 0;
   left: 1%; 
   animation: underlineAnimation 0.5s forwards; 
@@ -46,7 +46,7 @@ body {
 
 .navbar {
   text-align: center;
-  background-color: #fff;
+  background-color: #3c3c3c;
   padding: 10px 0;
 }
 
@@ -56,7 +56,7 @@ body {
 }
 
 .navbar-nav .nav-link {
-  color: #2c3e50;
+  color: #b2bcc4;
   font-size: 18px;
   margin: 0 10px;
   transition: background-color 0.3s ease-in-out;
@@ -67,7 +67,7 @@ body {
 }
 
 .navbar-nav .nav-link:hover {
-  color: #222f3b;
+  color: #f7f8fa;
 }
 
 .navbar-nav .nav-link:hover::before {
@@ -75,7 +75,7 @@ body {
   position: absolute;
   width: 80%; /* Adjust the width as needed */
   height: 5px;
-  background-color: #28a745;
+  background-color: #cb9227;
   bottom: 0;
   left: 10%; /* Adjust the left position for centering */
   animation: underlineAnimation 0.5s forwards; /* Animation definition */
@@ -89,16 +89,16 @@ body {
 .sign-in-up .btn {
   transition: background-color 0.3s ease-in-out,
     border-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  background-color: white;
+  color: #3c3c3c;
+  background-color: #ada6a6;
   font-size: 16px;
   border: none; /* Remove the border */
 }
 
 .sign-in-up .btn:hover {
   
-  color: #28a745;
+  color: #fafafa;
 }
-
 @media (max-width: 768px) {
   .navbar-nav {
     text-align: center;
@@ -123,6 +123,7 @@ body {
 
   body {
     padding-top: 56px; /* Adjust the value based on your navbar's height */
+    
   }
 
   
@@ -142,6 +143,9 @@ body {
             {{else}}
               <a href="/login" class="btn btn-primary">
               Login
+              </a>
+              <a href="/admin/login" class="btn btn-primary">
+              Login(Admin)
               </a>
             {{/if}}
       </div>
