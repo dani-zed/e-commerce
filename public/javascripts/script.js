@@ -77,4 +77,3 @@
     function updateTotal(total) {
       document.getElementById('total').innerHTML = total; // Update total amount
     }
-    

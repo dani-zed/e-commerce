@@ -5,6 +5,7 @@ const userHelper = require('../helpers/user-helpers');
 const userHelpers = require('../helpers/user-helpers');
 const verifyLogin = (req, res, next) => {
   if (req.session.user && req.session.user.loggedIn) {
+
     next();
   } else {
     res.redirect('/login');
@@ -113,7 +114,7 @@ router.get('/cart', verifyLogin, async (req, res) => {
 
   products = products.map((product, index) => ({ ...product, index: index + 1 }));
 
-  res.render('user/cart', { admin:false,products, user: req.session.user, total,cartCount });
+  res.render('user/cart', { admin:false ,products, user: req.session.user, total,cartCount });
 });
 
 

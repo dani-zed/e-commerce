@@ -7,7 +7,7 @@ body {
 
 .top-section {
   text-align: center;
-  background-color: #3c3c3c;
+  background-color: #476f33;
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@ body {
 }
 
 .top-section a {
-  color: #b2bcc4;
+  color: #fcfcfc;
   font-size: 24px;
   font-weight: bold;
   flex: 1;
@@ -46,7 +46,7 @@ body {
 
 .navbar {
   text-align: center;
-  background-color: #3c3c3c;
+  background-color: #ded5d5;
   padding: 10px 0;
 }
 
@@ -56,18 +56,18 @@ body {
 }
 
 .navbar-nav .nav-link {
-  color: #b2bcc4;
+  color: #070707;
   font-size: 18px;
   margin: 0 10px;
   transition: background-color 0.3s ease-in-out;
   position: relative;
 }
 .badge{
-  color: #2c3e50;
+  color:#cb9227;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #f7f8fa;
+  color: #e7ac65;
 }
 
 .navbar-nav .nav-link:hover::before {
@@ -132,9 +132,10 @@ body {
 </style>
 
 
+
  <section class="fixed-top">
   <div class="top-section">
-      <a href="#">Shop@</a>
+      <a href="/">Shop@</a>
       <div class="sign-in-up">
             {{#if user}}
                <a href="/personal-details" class="btn btn-primary">
@@ -144,11 +145,29 @@ body {
               <a href="/login" class="btn btn-primary">
               Login
               </a>
-              <a href="/admin/login" class="btn btn-primary">
-              Login(Admin)
-              </a>
-            {{/if}}
-      </div>
+            {{/if}} 
+            </div>
+   {{!-- {{#if user}}
+   <div class="dropdown">
+   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {{user.fname}}
+   </button>
+   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/personal details">Profile</a>
+  </div>
+  </div>
+   {{else}}
+   <div class="dropdown">
+   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Login
+   </button>
+   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="/login">User</a>
+    <a class="dropdown-item" href="/admin/login">Admin</a>
+  </div>
+  </div>
+   {{/if}} --}}
+      
     </div>
 
     <nav class="navbar navbar-expand-lg">
@@ -166,10 +185,11 @@ body {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
+            {{#if user}}
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
             </li>
-            <li class="nav-item">
+             <li class="nav-item">
               <a class="nav-link" href="/products">Products</a>
             </li>
             <li class="nav-item">
@@ -181,6 +201,23 @@ body {
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="/products">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Cart<span class="badge badge-success" style="font-size: 1rem;" id="cart-count">{{this.cartCount}}</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            {{/if}}
           </ul>
         </div>
       </div>
