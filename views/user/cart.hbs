@@ -143,9 +143,9 @@
                     style="width: 70px; height: 70px;" alt="Product Image"></td>
             <td>{{this.product.name}}</td>
             <td class="count-buttons">
-              <button class="btn btn-sm btn-secondary" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1, '{{this.product.prise}}')">-</button>
+              <button class="btn btn-sm btn-secondary" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1, '{{this.product.price}}')">-</button>
               <span id="{{this.product._id}}">{{this.quantity}}</span>
-              <button class="btn btn-sm btn-secondary" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1, '{{this.product.prise}}')">+</button>
+              <button class="btn btn-sm btn-secondary" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1, '{{this.product.price}}')">+</button>
             </td>
             <td>{{this.product.price}}</td>
             <td class="table-controls">

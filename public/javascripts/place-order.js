@@ -68,7 +68,7 @@ const stateDistricts = {
   function hideErrorMessage(errorId, symbolId) {
     const errorElement = document.getElementById(errorId);
     const symbolElement = document.getElementById(symbolId);
-    errorElement.innerHTML = '';
+    errorElement.innerHTML = 'null';
     errorElement.style.display = 'none';
     symbolElement.style.display = 'none';
   }
@@ -168,6 +168,7 @@ const stateDistricts = {
       method: 'post',
       data: $('#deliveryForm').serialize(),
       success: (response) => {
+        
         if (response.codSuccess) {
           location.href = '/order-success';
         } else {

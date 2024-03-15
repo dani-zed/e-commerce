@@ -21,7 +21,7 @@
   });
     }
 
-    function changeQuantity(cartId, productId, userId, count, productPrise) {
+    function changeQuantity(cartId, productId, userId, count, productPrice) {
       let quantityElement = document.getElementById(productId);
       let quantity = parseInt(quantityElement.innerHTML);
       count = parseInt(count);
@@ -44,7 +44,7 @@
             quantityElement.innerHTML = quantity + count;
             updateTotal(response.total); // Update total amount
             // You may also update individual item price if needed
-            // document.getElementById('item-total-' + productId).innerHTML = 'Rs.' + (quantity + count) * productPrise;
+            // document.getElementById('item-total-' + productId).innerHTML = 'Rs.' + (quantity + count) * productPrice;
           }
         }
       });

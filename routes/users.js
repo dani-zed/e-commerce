@@ -148,14 +148,16 @@ router.post('/remove-product', async (req, res, next) => {
 });
 
 router.get('/place-order',verifyLogin,async(req,res)=>{
+  console.log("check post")
   let total = await userHelpers.getTotalAmount(req.session.user._id)
   let cartCount = null;
   if (req.session.user) {
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
-  res.render('user/place-order',{admin:false,user:req.session.user,total,cartCount});
+  res.render('user/place-order',{user:req.session.user,total,cartCount});
 })
 router.post('/place-order', async (req, res) => {
+  console.log("post method working")
   try {
     let products = await userHelpers.getCartProductList(req.body.userId);
     let totalPrice = await userHelpers.getTotalAmount(req.session.user._id);
