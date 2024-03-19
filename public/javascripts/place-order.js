@@ -187,7 +187,7 @@ const stateDistricts = {
       "key": "rzp_test_v8bIpqXoTHrCgb",
       "amount": response.amount,
       "currency": "INR",
-      "name": "Rax",
+      "name": "Danish",
       "description": "Test Transaction",
       "image": "https://example.com/your_logo",
       "order_id": response.id,

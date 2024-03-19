@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/public/stylesheets/home.css">
+<style>
+.card{
+  background-color: #c1bbbb;
+}
+.content{
+  background-color: grey;
+}
+
+
+.card-img-top{
+  padding: 12px 13px;
+  flex: grid;
+}
+</style>
+
+<section class="content">
+
+  <div class="container mt-3">
+    <div class="row">
+      {{#each products}} 
+        <div class="col-md-3 mb-4">
+          {{!-- <a style="text-decoration: none;" href="/the-product/{{this._id}}"> --}}
+            <div class="card">
+            <img
+              src="/product-images/{{this._id}}.jpg"
+              class="card-img-top"
+              alt="Product Image"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{this.name}}</h5>
+              <p class="card-price"><span class="rs-text ">Rs.</span>{{this.price}}</p>
+              <p>{{this.description}}</p>
+            
+            
+              <button
+                {{!-- onclick="#addToCart('{{this._id}}')" --}}
+                class="btn btn-add-to-cart"
+              >Add to Cart</button>
+            </div>
+          </div>
+          </a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+</section>

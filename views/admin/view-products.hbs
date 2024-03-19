@@ -1,11 +1,16 @@
-<section>
+<style>
+  .body-prod{
+     margin-top: 200px;
+  }
+</style>
+<section class="body-prod">
     <div class="container">
     <div class="row">
-        <div class="col-md-12 p-3" style="display: flex; justify-content: flex-end;"> 
+        {{!-- <div class="col-md-12 p-3" style="display: flex; justify-content: flex-end;"> 
 
         <a href="/"><button class="btn btn-primary me-5">Home(users)</button></a>    
         <a href="/admin/add-product"><button class="btn btn-primary me-5">Add Product</button></a>
-    </div>
+    </div> --}}
         <table class="display" id="productsTable">
   <thead>
     <tr>
@@ -23,7 +28,7 @@
     {{#each products}}
 
     <tr>
-      <th scope="row">1</th>
+      <th scope="row">{{@index}}</th>
       <td>{{this.name}}</td>
       <td>{{this.category}}</td>
       <td>{{this.description}}</td>

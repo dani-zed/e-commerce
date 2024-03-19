@@ -7,6 +7,7 @@
         }
 
         .container-fluid {
+            background-color: beige;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -21,7 +22,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
+            background-color: #151f1c;
         }
 
         .profile-image {
@@ -77,6 +78,12 @@
         .edit-btn button:hover {
             background-color: #218838;
         }
+        h2{
+            color:#e27f07;
+        }
+        p{
+            color: #ffffff;
+        }
     </style>
 <section>
 
@@ -85,7 +92,7 @@
 <div class="container-fluid">
     <div class="profile-box">
         <div class="profile-image">
-            <img src="https://placekitten.com/200/200" alt="Profile Image">
+            <img src="images/user.png" alt="Profile Image">
         </div>
         <div class="details">
             <h2>Personal Details</h2>
@@ -96,9 +103,9 @@
             <p><strong>Mobile:</strong> {{this.user.mobile}}</p>
         </div>
         <div class="button-container">
-            <div class="edit-btn">
+            {{!-- <div class="edit-btn">
                 <button onclick="editProfile()">Edit</button>
-            </div>
+            </div> --}}
             <div class="logout-btn">
                 <button ><a href="/logout" style="text-decoration: none; color: white;">Logout</a></button>
             </div>

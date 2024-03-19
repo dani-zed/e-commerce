@@ -28,7 +28,7 @@ router.get('/login', (req, res) => {
   if (req.session.user && req.session.user.loggedIn) {
     res.redirect('/');
   } else {
-    res.render('user/login', { 'loginErr': req.session.userLoginErr });
+    res.render('user/login', {admin:false, 'loginErr': req.session.userLoginErr });
     req.session.userLoginErr = false;
   }
 });
@@ -64,6 +64,9 @@ router.get('/personal-details',verifyLogin,async(req,res)=>{
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
   res.render('user/personal-details',{admin:false,cartCount})
+})
+router.get('/contact-us',verifyLogin,async(req,res)=>{
+  res.render('user/contact-us',{admin:false,})
 })
 
 router.get('/products',async(req,res)=>{
@@ -262,7 +265,7 @@ router.get('/about',async(req,res)=>{
   if (req.session.user) {
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
-  res.render('user/about',{cartCount})
+  res.render('user/about',{admin:false,cartCount})
 })
 router.get('/view-order-details',async(req,res)=>{
   res.render('user/view-order-details',{admin:false})

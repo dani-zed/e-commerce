@@ -6,6 +6,7 @@ const path = require('path');
 // const productHelpers = require("../helpers/product-helpers");
 const adminHelper = require("../helpers/admin-helpers");
 const adminHelpers = require("../helpers/admin-helpers");
+const { log } = require("console");
 /* GET users listing. */
 const checkAdminLogin = (req, res, next) => {
   if (adminHelpers.checkAdminLogin(req)) {
@@ -15,10 +16,11 @@ const checkAdminLogin = (req, res, next) => {
   }
 };
 
-
+// home page
 router.get("/",checkAdminLogin, function (req, res, next) {
+  let admin=req.session.admin;
   productHelper.getAllProducts().then((products)=>{
-    res.render("admin/view-products", { admin: true, products });
+    res.render("admin/prod-preview", { admin: true, products ,admin });
   })
 });
 //adding code 
@@ -26,7 +28,7 @@ router.get("/",checkAdminLogin, function (req, res, next) {
 
 router.get('/login', (req, res) => {
   if (req.session.admin && req.session.admin.loggedIn) {
-    res.redirect('/admin');
+    res.redirect('/admin');//directing to home page
   } else {
     res.render('admin/login', { 'loginErr': req.session.adminLoginErr });
     req.session.adminLoginErr = false;
@@ -74,7 +76,17 @@ router.get('/logout', (req, res) => {
 
 
 //adding code
-
+// router.get("/view-prod", (req, res) => {
+//   console.log("view prod")
+//   res.render("admin/view-product",{admin:true});
+// });
+router.get("/view-prod",function (req, res) {
+  console.log("prod")
+  let admin=req.session.admin;
+  productHelper.getAllProducts().then((products)=>{
+    res.render("admin/view-products", { admin: true, products ,admin });
+  })
+});
 
 
 
@@ -141,5 +153,9 @@ router.post('/edit-product/:id',(req,res)=>{
     }
   })
 })
+
+// router.get("/profile", (req, res) => {
+//   res.render("admin/profile",{admin:true});
+// });
 
 module.exports = router;

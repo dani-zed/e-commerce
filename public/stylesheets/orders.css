@@ -1,21 +1,28 @@
 .order-table {
-    margin-top: 20px;
+    margin-bottom: 0;
 }
-
-.order-table th, .order-table td {
+.div{
+    overflow: hidden;
+    border-radius: 10px;
+}
+table{
+    border-radius: 5px;
+}
+.order-table tr{
     border: none;
 }
-
-.order-table th {
-    background-color: #f8f9fa;
+.order-table th, .order-table td {
+    border: none;
+    background-color: floralwhite;
 }
 
+
 .table-row:hover {
-    background-color: #f8f9fa;
+    background-color: #5a7e51;
 }
 
 .details-btn {
-    background-color: #007bff;
+    background-color: #1b1d1f;
     color: #ffffff;
     border: none;
     padding: 5px 10px;
@@ -24,8 +31,8 @@
 }
 
 .details-btn:hover {
-    background-color: #0056b3;
-    color: #ffffff;
+    background-color: #707263;
+    color: #000000;
 }
 .total-amount{
     color: green;
@@ -33,8 +40,11 @@
     font-weight: bold;
 }
 .product-box {
-    border: 1px solid #898888; /* Add borders for the box */
+    border: 4px solid lightblue  ; /* Add borders for the box */
     padding: 10px; /* Add padding for spacing inside the box */
     margin-bottom: 5px; /* Add margin for spacing between boxes */
     border-radius: 9px;
+}
+h2{
+    color: floralwhite;
 }

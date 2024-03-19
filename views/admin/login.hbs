@@ -1,4 +1,26 @@
-<section>
+<style>
+  .container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-group{
+    color: rgb(211, 205, 205);
+  }
+  .para{
+    font-size: 15;
+    color: rgb(95, 61, 195);
+  }
+  .sec-admin{
+    margin-top: 200px;
+  }
+  a{
+    color: rgb(66, 80, 159);
+  }
+</style>
+<section class="sec-admin">
   <div class="container mt-5" style="">
     <h2>Admin Login</h2>
     <form action="/admin/login" method="POST" style="width: 50%;" class="mt-4">
@@ -16,8 +38,8 @@
           aria-describedby="emailHelp"
           placeholder="Enter email"
         />
-        <small id="emailHelp" class="form-text text-muted">We'll never share
-          your email with anyone else.</small>
+        <p id="emailHelp" class="para">We'll never share
+          your email with anyone else.</p>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>

@@ -41,9 +41,9 @@
 </section> --}}
 
 
+{{!-- new comment is below--}}
 
-
-<style>
+{{!-- <style>
     body {
         font-family: 'Arial', sans-serif;
         background-color: #fff;
@@ -113,7 +113,7 @@
     }
 
     .signup-link a {
-        color: #007bff;
+        color: #222324;
         text-decoration: none;
     }
 </style>
@@ -170,5 +170,140 @@
                 'This field is required';
         }
     }
-</script>
+</script> --}}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
 
+        .login-container {
+            background-color: #c1bbbb;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .login-title {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #797272;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #d78448;
+        }
+
+        .error-message {
+            color: rgb(214, 56, 56);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group input:focus + .error-message {
+            display: block;
+        }
+
+        .btn-login {
+            background-color: #18181a;
+            color: #efe7e7;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .btn-login:hover {
+            background-color: #6a4b28;
+        }
+
+        .signup-link a {
+            color: #2272c7;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .signup-link a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">Login</h2>
+        <form onsubmit="return validateForm()" action="/login" method="POST">
+        {{#if loginErr}}
+            <p class="error text-danger">{{loginErr}}</p>
+        {{/if}}
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required
+                    onblur="validateField('email')" name="email">
+                <div class="error-message" id="errorEmail"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Password" required
+                    onblur="validateField('password')" name="password">
+                <div class="error-message" id="errorPassword"></div>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+        <div class="signup-link">
+            <p>Don't have an account? <a href="/signup">Create one</a></p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Add additional logic if needed
+            return true;
+        }
+
+        function validateField(fieldName) {
+            // Reset border color and clear the "field is required" message
+            document.getElementById(fieldName).style.borderColor = '#ccc';
+            document.getElementById('error' + fieldName.charAt(0).toUpperCase() + fieldName.slice(1)).innerHTML = '';
+
+            // Check if the field is empty when leaving the field
+            var fieldValue = document.getElementById(fieldName).value;
+            if (!fieldValue.trim()) {
+                document.getElementById(fieldName).style.borderColor = 'red';
+                document.getElementById('error' + fieldName.charAt(0).toUpperCase() + fieldName.slice(1)).innerHTML =
+                    'This field is required';
+            }
+        }
+    </script>
