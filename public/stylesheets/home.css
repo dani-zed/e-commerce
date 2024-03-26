@@ -1,5 +1,8 @@
 .card{
+  display: flex;
     background-color: #c1bbbb;
+    justify-content: center;
+    align-items: center;
   }
   .content{
     background-color: grey;

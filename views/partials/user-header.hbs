@@ -215,7 +215,7 @@ body {
 
  <section class="fixed-top">
   <div class="top-section">
-      <a href="/" class="titleECM">Electronic Market</a>
+      <a href="/" class="titleECM">E-Market</a>
       <div class="sign-in-up">
             {{#if user}}
               <img src="images/user.png" class="user-pic" onclick="toggleMenu()">
@@ -251,12 +251,24 @@ body {
                 </div>
               </div>
             {{else}}
-              <a href="/login" class="btn btn-primary">
+              <a href="#" class="btn btn-primary" onclick="toggleMenu()">
               Login
               </a>
-              <a href="/admin/login" class="btn btn-primary">
-              Admin-Login
-              </a>
+              <div class="sub-menu-wrap" id="subMenu">
+                <div class="sub-menu">
+                  <hr>
+                  <a href="/login" class="sub-menu-link">
+                    <img src="images/user-log.png">
+                    <p>User Login</p>
+                    <span>></span>
+                  </a>
+                  <a href="/admin/login" class="sub-menu-link">
+                    <img src="images/admin.png">
+                    <p>Admin Login</p>
+                    <span>></span>
+                  </a>
+                  </div>
+                  </div>
             {{/if}} 
             </div>
    {{!-- {{#if user}}

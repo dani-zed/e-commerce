@@ -50,9 +50,19 @@ const doLoginAdmin = async (adminData) => {
   const checkAdminLogin = (req) => {
     return req.session.admin && req.session.admin.loggedIn;
   };
+  const getProductDetails = async (productId) => {
+    try {
+        const product = await db.get().collection(collection.PRODUCT_COLLECTION).findOne({ _id: new ObjectId(productId) });
+        return product;
+    } catch (error) {
+        console.error("Error in getProductDetails:", error);
+        throw error;
+    }
+  };
 
 module.exports={
     doLoginAdmin,
     doSignupAdmin,
-    checkAdminLogin
+    checkAdminLogin,
+    getProductDetails
 };

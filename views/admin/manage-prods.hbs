@@ -1,20 +1,25 @@
-<style>
+
+    <style>
   .body-prod{
      margin-top: 200px;
   }
 </style>
 <section class="body-prod">
     <div class="container">
-    <div class="row"> 
+    <div class="row">
+    <div class="col-md-12 p-3" style="display: flex; justify-content: flex-end;">  
+        <a href="/admin/add-product"><button class="btn btn-primary me-5">Add Product</button></a>
+    </div>   
         <table class="display" id="productsTable">
   <thead class="t-head">
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Category</th>
       <th scope="col">Description</th>
       <th scope="col">Price</th>
       <th scope="col">Image</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody class="t-body">
@@ -22,13 +27,13 @@
     {{#each products}}
 
     <tr>
-      <th scope="row">{{@index}}</th>
       <td>{{this.name}}</td>
       <td>{{this.category}}</td>
       <td>{{this.description}}</td>
       <td>{{this.price}}</td>
       <td><img style="width: 50px; height:50px" src="/product-images/{{this._id}}.jpg" alt="Not supported"></td>
-      
+      <td><a href="/admin/edit-product/{{this._id}}"><button class="btn btn-success">Edit</button></a></td>
+      <td><a href="/admin/delete-product/{{this._id}}"><button class="btn btn-danger" onclick="return confirm('Do you want to delete {{this.name}} ?')">Delete</button></a></td>
     </tr>
     
     {{/each}}

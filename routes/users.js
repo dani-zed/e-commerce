@@ -245,7 +245,7 @@ router.get('/orders', verifyLogin, async (req, res) => {
 //   let products = await userHelpers.getOrderedProdcuts(req.params.id)
 //   res.render('user/view-ordered-products',{user:req.session.user,products})
 // })
-//add this to go to specific products
+// add this to go to specific products
 
 
 router.post('/verify-payment',(req,res)=>{

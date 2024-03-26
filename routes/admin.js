@@ -30,7 +30,7 @@ router.get('/login', (req, res) => {
   if (req.session.admin && req.session.admin.loggedIn) {
     res.redirect('/admin');//directing to home page
   } else {
-    res.render('admin/login', { 'loginErr': req.session.adminLoginErr });
+    res.render('admin/login', { admin: true,'loginErr': req.session.adminLoginErr });
     req.session.adminLoginErr = false;
   }
 });
@@ -49,7 +49,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  res.render('admin/signup');
+  res.render('admin/signup',{admin: true});
 });
 
 router.post('/signup', (req, res) => {
@@ -70,23 +70,47 @@ router.post('/signup', (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.session.admin = null;
-  res.redirect('/admin/login');
+  res.redirect('/');
 });
 
 
 
 //adding code
-// router.get("/view-prod", (req, res) => {
-//   console.log("view prod")
-//   res.render("admin/view-product",{admin:true});
-// });
-router.get("/view-prod",function (req, res) {
-  console.log("prod")
+router.get("/manage",function (req, res) {
+  let admin=req.session.admin;
+  productHelper.getAllProducts().then((products)=>{
+    res.render("admin/manage-prods", { admin: true, products ,admin });
+  })
+});
+
+
+router.get("/all-products",function (req, res) {
   let admin=req.session.admin;
   productHelper.getAllProducts().then((products)=>{
     res.render("admin/view-products", { admin: true, products ,admin });
   })
 });
+
+router.get("/profile",checkAdminLogin, (req, res) => {
+  res.render("admin/profile",{user:false});
+});
+
+// router.get('/view/:id', async (req, res) => {
+//   let admin=req.session.admin;
+//   try {
+//       // Retrieve the product details based on the ID
+//       const productId = req.params.id;
+//       const product = await productHelper.getProductDetails(productId);
+//       res.render('admin/product', {admin:true, product,admin });
+//   } catch (error) {
+//       console.error('Error in /the-product route:', error);
+//       res.status(500).send('Internal Server Error');
+//   }
+// });
+// router.get('/view/:id',async(req,res)=>{
+//   let product = await productHelper.getProductDetails(req.params.id)
+//   res.render('admin/product',{product})
+// })
 
 
 
@@ -117,14 +141,14 @@ router.post("/add-product", async (req, res) => {
         });
       });
 
-      res.render("admin/add-product");
+      res.render("admin/add-product",{admin:true});
     } else {
       console.log("Error adding product");
-      res.render("admin/add-product", { error: "Failed to add product" });
+      res.render("admin/add-product", {admin: true, error: "Failed to add product" });
     }
   } catch (error) {
     console.log(error);
-    res.render("admin/add-product", { error: "Failed to upload image" });
+    res.render("admin/add-product", { admin: true,error: "Failed to upload image" });
   }
 });
 
@@ -138,14 +162,16 @@ router.get('/delete-product/:id',(req,res)=>{
 
 router.get('/edit-product/:id',async(req,res)=>{
   let product = await productHelper.getProductDetails(req.params.id)
-  res.render('admin/edit-product',{product})
+  res.render('admin/edit-product',{admin:true,product})
 })
 
 router.post('/edit-product/:id',(req,res)=>{
   let id = req.params.id
   productHelper.updateProduct(req.params.id,req.body).then(()=>{
 
-    res.redirect('/admin')
+    res.redirect(302, '/admin');
+
+
 
     if(req.files.image){  
       let image = req.files.image

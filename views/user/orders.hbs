@@ -12,10 +12,11 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Date</th>
+            <th scope="col">Payment</th>
             <th scope="col">Products</th>
             <th scope="col">Total</th>
             <th scope="col">Status</th>
-            <th scope="col">Actions</th>
+            <th scope="col">View</th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
   <tr class="table-row">
     <th scope="row">{{@index}}</th>
     <td>{{date}}</td>
+    <td>{{paymentMethod}}</td>
     <td>
       <ul style="padding: 0;">
         {{#each products}}
